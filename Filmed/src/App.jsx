@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { fetchMovies } from './utils/movie-api';
 import { Card } from './components/Card/Card';
-import { PageNavigation } from './components/PageNavigation/PageNavigation'
 import { HOME_URL } from './constants/urls.js'
 import styles from './App.module.css'
 
