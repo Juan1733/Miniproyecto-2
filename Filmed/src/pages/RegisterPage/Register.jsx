@@ -58,7 +58,7 @@ export const Register = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Apellido</label>
-                        <input type="text" className="form-control" id="InputName" name="lastName" placeholder="Doe" onChange={onChange} />
+                        <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={onChange} />
                     </div>
 
                     <div className="mb-3">
@@ -71,7 +71,7 @@ export const Register = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Confirmar contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword1" placeholder="********" onChange={onChange} />
+                        <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={onChange} />
                     </div>
 
                     <div className="d-flex justify-content-center">
