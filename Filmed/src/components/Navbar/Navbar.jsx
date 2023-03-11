@@ -5,7 +5,7 @@ import styles from './Navbar.module.css'
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className={`navbar navbar-expand-lg ${styles.navbarLook}`}>
             <div className="container-fluid d-flex">
                 <div className='me-5'>
                     <a className="navbar-brand d-flex align-items-center" href={HOME_URL}>
@@ -22,12 +22,13 @@ function Navbar() {
                         <a className="nav-link active" aria-current="page" href={HOME_URL}>Inicio</a>
                         <a className="nav-link" href="#">Features</a>
                         <a className="nav-link me-5" href="#">Pricing</a>
-                        <Link to={LOGIN_URL}>
-                            <button type="button" className="btn btn-success">Iniciar sesion</button>
-                        </Link>
                     </div>
                 </div>
-               
+                <div>
+                    <Link to={LOGIN_URL}>
+                     <button type="button" className={`btn ${styles.btnLook} text-white`}>Iniciar sesion</button>
+                    </Link>
+                </div>
                 
             </div>
         </nav>
