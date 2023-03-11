@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import App from './App'
 import { Layout } from './components/Layout/Layout';
+import { Login } from "./pages/LoginPage/Login"
+import { Register } from "./pages/RegisterPage/Register"
+import { HOME_URL, LOGIN_URL, REGISTER_URL } from './constants/urls';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -10,7 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path={'/'} element={<App />}/>
+          <Route path={HOME_URL} element={<h1>hola</h1>}/>
+          <Route path={LOGIN_URL} element={<Login />}/>
+          <Route path={REGISTER_URL} element={<Register />}/>
         </Route>
       </Routes>
     </BrowserRouter>
