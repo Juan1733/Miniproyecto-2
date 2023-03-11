@@ -2,21 +2,47 @@ import { useState, useEffect } from 'react'
 import { fetchMovies } from './utils/movie-api';
 import { Card } from './components/Card/Card';
 import { PageNavigation } from './components/PageNavigation/PageNavigation'
-import './App.css'
+import { HOME_URL } from './constants/urls.js'
+import styles from './App.module.css'
 
 function App() {
 
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
 
   const getMovies = async () => {
-    const { data } = await fetchMovies()
+    const { data } = await fetchMovies(page)
     setMovies(data.results)
     //console.log(data)
   }
 
+  const addPage = () => {
+    setPage(page + 1)
+  }
+
+  const setNumber1 = () => {
+    if (page != 1) {
+      setPage(1)
+    }
+  }
+
+  const setNumber2 = () => {
+    setPage(2)
+  }
+
+  const setNumber3 = () => {
+    setPage(3)
+  }
+
+  const subtractPage = () => {
+    if (page != 1) {
+      setPage(page - 1)
+    }
+  }
+
   useEffect(() => {
     getMovies()
-  }, [])
+  }, [page])
   console.log(movies)
 
   return (
@@ -29,7 +55,15 @@ function App() {
       </div>
 
       <div className="d-flex justify-content-center my-2">
-        <PageNavigation />
+      <nav aria-label="Page navigation example">
+            <ul className={`pagination ${styles.looks}`}>
+                <li className="page-item"><a className="page-link text-white" href="#" onClick={subtractPage}>Previous</a></li>
+                <li className="page-item"><a className="page-link text-white" href="#" onClick={setNumber1}>1</a></li>
+                <li className="page-item"><a className="page-link text-white" href="#" onClick={setNumber2}>2</a></li>
+                <li className="page-item"><a className="page-link text-white" href="#" onClick={setNumber3}>3</a></li>
+                <li className="page-item"><a className="page-link text-white" href="#" onClick={addPage}>Next</a></li>
+            </ul>
+        </nav>
       </div>
 
     </div>

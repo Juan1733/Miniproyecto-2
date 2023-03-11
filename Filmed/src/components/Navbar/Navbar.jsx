@@ -20,7 +20,7 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <a className="nav-link active" aria-current="page" href={HOME_URL}>Inicio</a>
-                        <a className="nav-link" href="#">Features</a>
+                        <a className="nav-link" href="#">Proximos estrenos</a>
                         <a className="nav-link me-5" href="#">Pricing</a>
                     </div>
                 </div>
