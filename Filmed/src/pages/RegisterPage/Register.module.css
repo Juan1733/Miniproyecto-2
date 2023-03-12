@@ -1,7 +1,13 @@
 .registerButton {
     background-color: green;
+    border-color: green;
     color: white;
     width: 350px;
+}
+
+.registerButton:hover {
+    background-color: rgb(2, 100, 2);
+    border-color: rgb(2, 100, 2);
 }
 
 .button2 {

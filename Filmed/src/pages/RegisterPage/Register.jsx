@@ -70,7 +70,7 @@ export function Register() {
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">Apellido</label>
-                        <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={onChange} />
+                        <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={handleOnChange} />
                     </div>
 
                     <div className="mb-3">

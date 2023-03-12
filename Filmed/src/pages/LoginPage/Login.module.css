@@ -5,6 +5,11 @@
     width: 350px;
 }
 
+.button1:hover {
+    background-color: rgb(3, 95, 3);
+    color: white;
+}
+
 .button2 {
     width: 350px;
 }
