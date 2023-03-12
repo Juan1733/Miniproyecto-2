@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HOME_URL, LOGIN_URL } from '../../constants/urls';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'
+// import { logout } from "../../firebase/auth";
+import { useUser } from "../../contexts/userContext";
+import { logout } from "../../firebase/auth";
 
 function Navbar() {
+    const user = useUser();
+    console.log(user);
+
+    const handleLogout = async() => {
+        await logout();
+    }
+
+    // useEffect(() => {
+
     return (
         <nav className={`navbar navbar-expand-lg ${styles.navbarLook}`}>
             <div className="container-fluid d-flex">
@@ -22,14 +34,20 @@ function Navbar() {
                         <a className="nav-link active" aria-current="page" href={HOME_URL}>Inicio</a>
                         <a className="nav-link" href="#">Proximos estrenos</a>
                         <a className="nav-link me-5" href="#">Pricing</a>
+                        
+                        {!!user ? (
+                            <button type="button" onClick={handleLogout} className="btn btn-success">Salir de la cuenta</button>
+                        ) : (
+
+                        <Link to={LOGIN_URL}>
+                            <button type="button" className={`btn ${styles.btnLook} text-white`}>Iniciar sesion</button>
+                        </Link>
+                        )}
+
+                        
+                        
                     </div>
-                </div>
-                <div>
-                    <Link to={LOGIN_URL}>
-                     <button type="button" className={`btn ${styles.btnLook} text-white`}>Iniciar sesion</button>
-                    </Link>
-                </div>
-                
+                </div>                
             </div>
         </nav>
     );
