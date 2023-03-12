@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react'
 import { fetchUpcoming } from './../../utils/movie-api';
 import { Card } from './../../components/Card/Card';
+import { Spinner } from '../../components/Spinner/Spinner';
 import styles from './UpcomingPage.module.css'
 
 function UpcomingPage() {
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(true);
 
   const getMovies = async () => {
+    setLoading(true)
     const { data } = await fetchUpcoming(page)
     setMovies(data.results)
-    //console.log(data)
+    setLoading(false)
   }
 
   const addPage = () => {
@@ -41,13 +44,19 @@ function UpcomingPage() {
   useEffect(() => {
     getMovies()
   }, [page])
-  console.log(movies)
 
   return (
     <div className="App">
       <h1 className='my-4 text-center text-white'>Proximos estrenos</h1>
+
+      {isLoading && (
+        <div>
+          <Spinner />
+        </div>
+      )}
+
       <div className='d-flex flex-wrap justify-content-center justify-content-md-evenly justify-content-xl-between'>
-        {movies.map((movie, index) => (
+        {!isLoading && movies.map((movie, index) => (
           <Card movie={movie} key={index}/>
         ))}
       </div>

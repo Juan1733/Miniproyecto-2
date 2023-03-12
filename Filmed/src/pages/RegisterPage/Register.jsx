@@ -48,36 +48,36 @@ export const Register = () => {
             </div>
 
             <div className="pt-5 px-3">
-                <h2>Registrarse</h2>
-                <p>¿Ya tienes una cuenta? <a href={LOGIN_URL} className={styles.anchor}>Accede aqui</a></p>
+                <h2 className="text-white mb-3">Registrarse</h2>
+                <p className="text-white">¿Ya tienes una cuenta? <a href={LOGIN_URL} className={styles.anchor}>Accede aqui</a></p>
                 
                 <form className={styles.formFormat}>
-                    <div className="mb-3">
-                        <label className="form-label">Nombre</label>
+                    <div className="mt-4 mb-3">
+                        <label className="form-label text-white">Nombre</label>
                         <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={onChange}/>
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Apellido</label>
+                        <label className="form-label text-white">Apellido</label>
                         <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={onChange} />
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">Correo</label>
-                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="johndoe@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
+                        <label className="form-label text-white">Correo</label>
+                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="example@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Contraseña</label>
+                        <label className="form-label text-white">Contraseña</label>
                         <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={onChange}/>
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Confirmar contraseña</label>
+                        <label className="form-label text-white">Confirmar contraseña</label>
                         <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={onChange} />
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <button type="submit" onClick={handleSubmit} className={`btn btn-primary py-2 ${styles.registerButton}`}>Registrarse</button>
+                        <button type="submit" onClick={handleSubmit} className={`btn py-2 mt-2 ${styles.registerButton}`}>Registrarse</button>
                     </div>
-                    <button type="button" onClick={handleGoogleClick} className={`btn btn-secondary mt-2 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
+                    <button type="button" onClick={handleGoogleClick} className={`btn btn-secondary mt-3 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
                     
                 </form>                    
             </div>

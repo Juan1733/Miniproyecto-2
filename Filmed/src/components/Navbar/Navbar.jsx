@@ -36,7 +36,7 @@ function Navbar() {
                         <a className="nav-link me-5" href="#">Pricing</a>
                         
                         {!!user ? (
-                            <button type="button" onClick={handleLogout} className="btn btn-success">Salir de la cuenta</button>
+                            <button type="button" onClick={handleLogout} className={`btn ${styles.btnLook} text-white`}>Salir de la cuenta</button>
                         ) : (
 
                         <Link to={LOGIN_URL}>

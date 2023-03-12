@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { fetchMovies } from './utils/movie-api';
 import { Card } from './components/Card/Card';
+import { Spinner } from './components/Spinner/Spinner';
 import { HOME_URL } from './constants/urls.js'
 import styles from './App.module.css'
 
@@ -8,11 +9,13 @@ function App() {
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setLoading] = useState(false)
 
   const getMovies = async () => {
+    setLoading(true)
     const { data } = await fetchMovies(page)
     setMovies(data.results)
-    //console.log(data)
+    setLoading(false)
   }
 
   const addPage = () => {
@@ -47,10 +50,19 @@ function App() {
   return (
     <div className="App">
       <h1 className='my-4 text-center text-white'>Todas las películas</h1>
+
+      {isLoading && (
+        <div>
+          <Spinner />
+        </div>
+      )}
+
       <div className='d-flex flex-wrap justify-content-center justify-content-md-evenly justify-content-xl-between'>
-        {movies.map((movie, index) => (
+
+        {!isLoading && movies.map((movie, index) => (
           <Card movie={movie} key={index}/>
         ))}
+
       </div>
 
       <div className="d-flex justify-content-center my-2">

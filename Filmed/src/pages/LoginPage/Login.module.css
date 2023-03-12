@@ -1,0 +1,30 @@
+.button1 {
+    background-color: green;
+    border-color: green;
+    color: white;
+    width: 350px;
+}
+
+.button2 {
+    width: 350px;
+}
+
+.image {
+    width: 350px;
+    object-fit: cover;
+}
+
+.anchor {
+    color: rgb(3, 172, 3);
+}
+
+.container {
+    height: calc(100vh - 66px);
+}
+
+/*Desktop*/
+@media (min-width: 1024px) {
+    .image {
+        width: 650px;
+    }
+}
