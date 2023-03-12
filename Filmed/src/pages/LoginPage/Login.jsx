@@ -49,12 +49,12 @@ export const Login = () => {
 
             <div>
                 {/* <Link to={REGISTER_URL}>¿No tienes cuenta?{" "} <span>Registrate</span></Link> */}
-                <span class="text-light bg-dark">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
-                <h2 class="text-light bg-dark">Iniciar sesión</h2>
+                <span class="text-light">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
+                <h2 class="text-light mt-4 mb-3">Iniciar sesión</h2>
                 <form onSubmit={onSubmit}>
                     <div className="mb-3">
                         <label className="form-label" class="text-light bg-dark">Correo</label>
-                        <input type="email" className="form-control" id="InputEmail1" placeholder="JohnDoe@gmail.com" name="email" onChange={handleOnChange} aria-describedby="emailHelp"/>
+                        <input type="email" className="form-control" id="InputEmail1" placeholder="example@gmail.com" name="email" onChange={handleOnChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-4">
                         <label className="form-label" class="text-light bg-dark">Contraseña</label>
