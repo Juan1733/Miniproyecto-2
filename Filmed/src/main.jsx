@@ -5,7 +5,8 @@ import App from './App'
 import { Layout } from './components/Layout/Layout';
 import { Login } from "./pages/LoginPage/Login"
 import { Register } from "./pages/RegisterPage/Register"
-import { HOME_URL, LOGIN_URL, REGISTER_URL, UPCOMING_URL } from './constants/urls';
+import { SearchPage } from "./pages/SearchPage/SearchPage"
+import { HOME_URL, LOGIN_URL, REGISTER_URL, SEARCH_URL, UPCOMING_URL } from './constants/urls';
 import './index.css'
 import UpcomingPage from './pages/UpcomingPage/UpcomingPage';
 
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={LOGIN_URL} element={<Login />}/>
           <Route path={REGISTER_URL} element={<Register />}/>
           <Route path={UPCOMING_URL} element={<UpcomingPage />}/>
+          <Route path={SEARCH_URL} element={<SearchPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>

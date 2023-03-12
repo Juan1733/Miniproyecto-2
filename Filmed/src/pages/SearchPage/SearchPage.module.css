@@ -1,0 +1,38 @@
+.inputLook {
+    width: 250px;
+    background-color: rgb(218, 218, 218);
+    color: black;
+}
+
+.searchBtn {
+    border-color: green;
+    color: green;
+}
+
+.searchBtn:hover {
+    background-color: green;
+}
+
+.resultImg {
+    width: 350px;
+}
+
+.notFoundCont {
+    width: 350px;
+}
+
+/*Tablet*/
+@media (min-width: 750px) {
+    .inputLook {
+        width: 400px;
+    }
+    .searchBtn {
+        width: 100px;
+    }
+    .resultImg {
+        width: 500px;
+    }
+    .notFoundCont {
+        width: initial;
+    }
+}
