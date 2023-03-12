@@ -1,0 +1,7 @@
+.looks > li > a {
+    background-color: green;
+}
+
+.looks > li > a:hover {
+    background-color: rgb(0, 97, 0);
+}
