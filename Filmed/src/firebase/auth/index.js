@@ -10,44 +10,15 @@ import {
   import { createUser } from "../users";
   
   // HANDLE SING IN OR REGISTER USING GOOGLE PROVIDER
-  export const signInWithGoogle = async ({ onSuccess, onFail }) => {
+  export const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const { isNewUser } = getAdditionalUserInfo(result);
-  
-      if (isNewUser) {
-        const { uid, email, displayName } = result.user;
-        await createUser({
-          uid,
-          email,
-          name: displayName,
-          age: "",
-        });
-      }
-  
-      if (onSuccess) {
-        onSuccess();
-      }
-    } catch (error) {
-      const errorCode = error?.code;
-      const errorMessage = error?.message;
-      // The email of the user's account used.
-      const email = error?.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-  
-      if (onFail) {
-        onFail();
-      }
-  
-      console.error("FAILED SIGN IN WITH GOOGLE", {
-        errorCode,
-        errorMessage,
-        email,
-        credential,
-      });
+      // const { isNewUser } = getAdditionalUserInfo(result);
+    }catch (error) {
+      console.error("GOOGLE SIGN IN FAILED", { error });
     }
   };
+  
   
   // HANDLE REGISTER WITH EMAIL AND PASSWORD
   export const registerWithEmailAndPassword = async ({
@@ -107,6 +78,7 @@ import {
   export const logout = async (callback) => {
     try {
       await signOut(auth);
+      
   
       if (callback) {
         callback();
@@ -114,4 +86,4 @@ import {
     } catch (error) {
       console.error("SIGN OUT FAILED", { error });
     }
-  };
+  }; 
