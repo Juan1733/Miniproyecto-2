@@ -7,39 +7,37 @@ import { loginWithEmailAndPassword, signInWithGoogle } from "../../firebase/auth
 
 
 export const Login = () => {
+  const navigate = useNavigate();
 
+  const [formData, setFormData]= useState({
+    email: "",
+    password: "",
+  })
 
-    const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-      email: "",
-      password: "",
-    });
   
-    const onSuccess = () => {
-      navigate(HOME_URL);
-    };
-  
-    const onFail = (_error) => {
-      console.log("LOGIN FAILED, Try Again");
-    };
-  
-    const onSubmit = async (event) => {
+  const onSubmit = async (event) => {
+    try{
       event.preventDefault();
+      const {email, password} = formData;
+      console.log(formData)
+      await loginWithEmailAndPassword( email, password )
+      navigate("/");
+    } catch (err) {
+      console.log(err)
+    }
+  };
+  const handleGoogleClick = async () => {
+    await signInWithGoogle();
+    navigate("/");
+  };
   
-      await loginWithEmailAndPassword({ userData: formData, onSuccess, onFail });
-    };
-  
-    const onChange = (event) => {
-      const { name, value } = event.target;
-  
-      setFormData((oldData) => ({ ...oldData, [name]: value }));
-    };
-  
-    const handleGoogleClick = async () => {
-      await signInWithGoogle({
-        onSuccess: () => navigate(HOME_URL),
-      });
-    };
+  const handleOnChange = (event) => {
+  const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  };
   
 
     return(
@@ -53,14 +51,14 @@ export const Login = () => {
                 {/* <Link to={REGISTER_URL}>¿No tienes cuenta?{" "} <span>Registrate</span></Link> */}
                 <span class="text-light bg-dark">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
                 <h2 class="text-light bg-dark">Iniciar sesión</h2>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="mb-3">
                         <label className="form-label" class="text-light bg-dark">Correo</label>
-                        <input type="email" className="form-control" id="InputEmail1" placeholder="JohnDoe@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
+                        <input type="email" className="form-control" id="InputEmail1" placeholder="JohnDoe@gmail.com" name="email" onChange={handleOnChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-4">
                         <label className="form-label" class="text-light bg-dark">Contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword1" placeholder="********" onChange={onChange} />
+                        <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={handleOnChange} />
                     </div>
                     <button type="submit" className={`btn btn-primary ${styles.button1}`}>Iniciar</button>
                 </form>
