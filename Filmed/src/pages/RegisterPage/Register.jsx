@@ -5,10 +5,21 @@ import { registerWithEmailAndPassword, signInWithGoogle } from "../../firebase/a
 import { useState } from "react";
 
 
-export const Register = () => {
+export function Register() {
 
-    const navigate = useNavigate();
-    const [formData, setData] = useState({});
+    const [formData, setFormData]= useState({
+        name: "",
+        email: "",
+        password: "",
+    })
+
+    const onSubmit = async (event) => {
+      event.preventDefault();
+      console.log(formData);
+      await registerWithEmailAndPassword(formData.email, formData.password);
+    };
+
+    // const navigate = useNavigate();
   
     const onSuccess = () => {
       navigate(HOME_URL);
@@ -18,27 +29,28 @@ export const Register = () => {
       console.log("REGISTER FAILED, Try Again");
     };
   
-    const handleSubmit = async (event) => {
-      event.preventDefault();
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
   
-      await registerWithEmailAndPassword({
-        userData: formData,
-        onSuccess,
-        onFail,
-      });
-    };
+    //   await registerWithEmailAndPassword({
+    //     userData: formData,
+    //     onSuccess,
+    //     onFail,
+    //   });
+    // };
   
-    const handleGoogleClick = async () => {
-      await signInWithGoogle({
-        onSuccess: () => navigate(HOME_URL),
-      });
-    };
+    // const handleGoogleClick = async () => {
+    //   await signInWithGoogle({
+    //     onSuccess: () => navigate(HOME_URL),
+    //   });
+    // };
   
-    const onChange = (event) => {
-      setData((oldData) => ({
-        ...oldData,
-        [event.target.name]: event.target.value,
-      }));
+    const handleOnChange = (event) => {
+      const { name, value } = event.target;
+      setFormData({
+          ...formData,
+          [name]: value
+      })
     };
 
     return(
@@ -51,10 +63,10 @@ export const Register = () => {
                 <h2 className="text-white mb-3">Registrarse</h2>
                 <p className="text-white">¿Ya tienes una cuenta? <a href={LOGIN_URL} className={styles.anchor}>Accede aqui</a></p>
                 
-                <form className={styles.formFormat}>
-                    <div className="mt-4 mb-3">
-                        <label className="form-label text-white">Nombre</label>
-                        <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={onChange}/>
+                <form className={styles.formFormat} onSubmit={onSubmit}>
+                    <div className="mb-3">
+                        <label className="form-label">Nombre</label>
+                        <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={handleOnChange}/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">Apellido</label>
@@ -63,21 +75,21 @@ export const Register = () => {
 
                     <div className="mb-3">
                         <label className="form-label text-white">Correo</label>
-                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="example@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
+                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="example@gmail.com" onChange={handleOnChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">Contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={onChange}/>
+                        <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={handleOnChange}/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-white">Confirmar contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={onChange} />
+                        <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={handleOnChange} />
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <button type="submit" onClick={handleSubmit} className={`btn py-2 mt-2 ${styles.registerButton}`}>Registrarse</button>
+                        <button type="submit" className={`btn btn-primary py-2 mt-2 ${styles.registerButton}`}>Registrarse</button>
                     </div>
-                    <button type="button" onClick={handleGoogleClick} className={`btn btn-secondary mt-3 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
+                    <button type="button"  className={`btn btn-secondary mt-3 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
                     
                 </form>                    
             </div>

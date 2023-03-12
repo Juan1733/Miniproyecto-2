@@ -21,24 +21,10 @@ import {
   
   
   // HANDLE REGISTER WITH EMAIL AND PASSWORD
-  export const registerWithEmailAndPassword = async ({
-    userData,
-    onSuccess,
-    onFail,
-  }) => {
+  export const registerWithEmailAndPassword = async ({email, password}) => {
     try {
-      const { email, password, ...restData } = userData;
-      const firebaseResult = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-  
-      await createUser({
-        ...restData,
-        email,
-        uid: firebaseResult.user.uid,
-      });
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      console.log("registered email and password", result);
   
       // SUCCESS CALLBACK
       if (onSuccess) {
@@ -46,9 +32,9 @@ import {
       }
     } catch (error) {
       console.error("REGISTER FAILED", { error });
-      if (onFail) {
-        onFail();
-      }
+      // if (onFail) {
+      //   onFail();
+      // }
     }
   };
   

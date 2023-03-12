@@ -21,10 +21,16 @@
 .container {
     height: calc(100vh - 66px);
 }
+.span{
+    color: rgb(243, 234, 234);
+}
 
 /*Desktop*/
 @media (min-width: 1024px) {
     .image {
         width: 650px;
     }
+}
+.label{
+    color: rgb(243, 234, 234);
 }
