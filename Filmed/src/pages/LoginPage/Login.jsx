@@ -45,7 +45,7 @@ export const Login = () => {
     return(
         <div className='d-flex justify-content-evenly flex-wrap'>
             <div className='img-container'>
-                <img src="//" className={styles.image} />
+                <img src="https://thumbs.dreamstime.com/b/family-mother-father-children-watching-projector-tv-movies-popcorn-evening-home-family-mother-father-children-158601206.jpg" className={styles.image} />
             </div>
 
 

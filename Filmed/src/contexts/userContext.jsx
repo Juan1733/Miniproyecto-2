@@ -1,43 +1,35 @@
+import React, { useContext, createContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/config";
-import { getUserProfile } from "../firebase/users";
 
-export const UserContext = React.createContext();
+export const UserContext = createContext(null);
 
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [isLoadingUser, setIsLoadingUser] = useState(true);
+
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (firebaseUser) => {
-      setIsLoadingUser(true);
-      if (firebaseUser && !user) {
-        const userProfile = await getUserProfile(firebaseUser.email);
+    onAuthStateChanged(auth, (firebaseUser) => {
 
-        setUser(userProfile);
-      } else {
-        setUser(null);
+      console.log(firebaseUser);
+      if (firebaseUser) {
+        setUser({
+          id: firebaseUser.uid,
+          name: firebaseUser.displayName,
+          email: firebaseUser.email,
+        });
       }
-
-      setIsLoadingUser(false);
+      
     });
   }, []);
 
-  return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        isLoadingUser,
-        setIsLoadingUser,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
-  );
+
+  return (<UserContext.Provider 
+  value={{
+    user,
+    }} >{children}</UserContext.Provider>);
 }
 
-export function useUserContext() {
+export function useUser() {
   return useContext(UserContext);
 }

@@ -44,7 +44,7 @@ export const Register = () => {
     return(
         <div className='d-flex justify-content-evenly flex-wrap'>
             <div className='d-flex align-items-center'>
-                <img src="/" className={styles.image}/>
+                <img src="https://media.istockphoto.com/id/1001414360/photo/multi-ethnic-teenage-friends-watching-tv-together-at-hangout-house.jpg?s=612x612&w=0&k=20&c=3npZe24UFEBNrEvuX6w0u0Rt_OBjXGp4D206Jpa-LCA=" className={styles.image}/>
             </div>
 
             <div className="pt-5 px-3">
