@@ -1,0 +1,31 @@
+.registerButton {
+    background-color: green;
+    border-color: green;
+    color: white;
+    width: 350px;
+}
+
+.registerButton:hover {
+    background-color: rgb(2, 100, 2);
+    border-color: rgb(2, 100, 2);
+}
+
+.button2 {
+    width: 350px;
+}
+
+.image {
+    width: 350px;
+    object-fit: cover;
+}
+
+.anchor {
+    color: rgb(3, 172, 3);
+}
+
+/*Desktop*/
+@media (min-width: 1024px) {
+    .image {
+        width: 650px;
+    }
+}

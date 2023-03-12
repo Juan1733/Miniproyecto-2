@@ -41,13 +41,13 @@ export const Login = () => {
   
 
     return(
-        <div className='d-flex justify-content-evenly flex-wrap'>
-            <div className='img-container'>
+        <div className={`d-flex justify-content-evenly align-items-center flex-wrap ${styles.container}`}>
+            <div>
                 <img src="https://thumbs.dreamstime.com/b/family-mother-father-children-watching-projector-tv-movies-popcorn-evening-home-family-mother-father-children-158601206.jpg" className={styles.image} />
             </div>
 
 
-            <div className='pt-5'>
+            <div>
                 {/* <Link to={REGISTER_URL}>¿No tienes cuenta?{" "} <span>Registrate</span></Link> */}
                 <span class="text-light bg-dark">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
                 <h2 class="text-light bg-dark">Iniciar sesión</h2>
@@ -60,7 +60,7 @@ export const Login = () => {
                         <label className="form-label" class="text-light bg-dark">Contraseña</label>
                         <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={handleOnChange} />
                     </div>
-                    <button type="submit" className={`btn btn-primary ${styles.button1}`}>Iniciar</button>
+                    <button type="submit" className={`btn py-2 my-2 mb-3 ${styles.button1}`}>Iniciar</button>
                 </form>
 
                     <button type="button" onClick={handleGoogleClick} className={`btn btn-secondary pb-2 ${styles.button2}`}>Continuar con Google</button>

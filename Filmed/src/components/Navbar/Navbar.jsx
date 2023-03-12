@@ -1,5 +1,5 @@
+import { HOME_URL, LOGIN_URL, UPCOMING_URL } from '../../constants/urls';
 import React, { useEffect } from 'react';
-import { HOME_URL, LOGIN_URL } from '../../constants/urls';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'
 // import { logout } from "../../firebase/auth";
@@ -32,11 +32,11 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <a className="nav-link active" aria-current="page" href={HOME_URL}>Inicio</a>
-                        <a className="nav-link" href="#">Proximos estrenos</a>
+                        <a className="nav-link" href={UPCOMING_URL}>Proximos estrenos</a>
                         <a className="nav-link me-5" href="#">Pricing</a>
                         
                         {!!user ? (
-                            <button type="button" onClick={handleLogout} className="btn btn-success">Salir de la cuenta</button>
+                            <button type="button" onClick={handleLogout} className={`btn ${styles.btnLook} text-white`}>Salir de la cuenta</button>
                         ) : (
 
                         <Link to={LOGIN_URL}>
