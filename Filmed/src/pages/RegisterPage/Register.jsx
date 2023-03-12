@@ -5,10 +5,21 @@ import { registerWithEmailAndPassword, signInWithGoogle } from "../../firebase/a
 import { useState } from "react";
 
 
-export const Register = () => {
+export function Register() {
 
-    const navigate = useNavigate();
-    const [formData, setData] = useState({});
+    const [formData, setFormData]= useState({
+        name: "",
+        email: "",
+        password: "",
+    })
+
+    const onSubmit = async (event) => {
+      event.preventDefault();
+      console.log(formData);
+      await registerWithEmailAndPassword(formData.email, formData.password);
+    };
+
+    // const navigate = useNavigate();
   
     const onSuccess = () => {
       navigate(HOME_URL);
@@ -18,27 +29,28 @@ export const Register = () => {
       console.log("REGISTER FAILED, Try Again");
     };
   
-    const handleSubmit = async (event) => {
-      event.preventDefault();
+    // const handleSubmit = async (event) => {
+    //   event.preventDefault();
   
-      await registerWithEmailAndPassword({
-        userData: formData,
-        onSuccess,
-        onFail,
-      });
-    };
+    //   await registerWithEmailAndPassword({
+    //     userData: formData,
+    //     onSuccess,
+    //     onFail,
+    //   });
+    // };
   
-    const handleGoogleClick = async () => {
-      await signInWithGoogle({
-        onSuccess: () => navigate(HOME_URL),
-      });
-    };
+    // const handleGoogleClick = async () => {
+    //   await signInWithGoogle({
+    //     onSuccess: () => navigate(HOME_URL),
+    //   });
+    // };
   
-    const onChange = (event) => {
-      setData((oldData) => ({
-        ...oldData,
-        [event.target.name]: event.target.value,
-      }));
+    const handleOnChange = (event) => {
+      const { name, value } = event.target;
+      setFormData({
+          ...formData,
+          [name]: value
+      })
     };
 
     return(
@@ -47,37 +59,32 @@ export const Register = () => {
                 <img src="https://media.istockphoto.com/id/1001414360/photo/multi-ethnic-teenage-friends-watching-tv-together-at-hangout-house.jpg?s=612x612&w=0&k=20&c=3npZe24UFEBNrEvuX6w0u0Rt_OBjXGp4D206Jpa-LCA=" className={styles.image}/>
             </div>
 
-            <div className="pt-5 px-3">
+            <div className="pt-5 px-3" class="text-light bg-dark">
                 <h2>Registrarse</h2>
                 <p>¿Ya tienes una cuenta? <a href={LOGIN_URL} className={styles.anchor}>Accede aqui</a></p>
                 
-                <form className={styles.formFormat}>
+                <form className={styles.formFormat} onSubmit={onSubmit}>
                     <div className="mb-3">
                         <label className="form-label">Nombre</label>
-                        <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={onChange}/>
+                        <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={handleOnChange}/>
                     </div>
-                    <div className="mb-3">
-                        <label className="form-label">Apellido</label>
-                        <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={onChange} />
-                    </div>
-
                     <div className="mb-3">
                         <label className="form-label">Correo</label>
-                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="johndoe@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
+                        <input type="email" className="form-control" id="InputEmail1" name="email" placeholder="johndoe@gmail.com" onChange={handleOnChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={onChange}/>
+                        <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={handleOnChange}/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Confirmar contraseña</label>
-                        <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={onChange} />
+                        <input type="password" className="form-control" id="InputPassword2" placeholder="********" onChange={handleOnChange} />
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <button type="submit" onClick={handleSubmit} className={`btn btn-primary py-2 ${styles.registerButton}`}>Registrarse</button>
+                        <button type="submit" className={`btn btn-primary py-2 ${styles.registerButton}`}>Registrarse</button>
                     </div>
-                    <button type="button" onClick={handleGoogleClick} className={`btn btn-secondary mt-2 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
+                    <button type="button"  className={`btn btn-secondary mt-2 py-2 mb-5 ${styles.button2}`}>Registrate con Google</button>
                     
                 </form>                    
             </div>

@@ -51,15 +51,15 @@ export const Login = () => {
 
             <div className='pt-5'>
                 {/* <Link to={REGISTER_URL}>¿No tienes cuenta?{" "} <span>Registrate</span></Link> */}
-                <span>¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
-                <h2 className="mt-3 mb-3">Iniciar sesión</h2>
+                <span class="text-light bg-dark">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
+                <h2 class="text-light bg-dark">Iniciar sesión</h2>
                 <form>
                     <div className="mb-3">
-                        <label className="form-label">Correo</label>
+                        <label className="form-label" class="text-light bg-dark">Correo</label>
                         <input type="email" className="form-control" id="InputEmail1" placeholder="JohnDoe@gmail.com" onChange={onChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-4">
-                        <label className="form-label">Contraseña</label>
+                        <label className="form-label" class="text-light bg-dark">Contraseña</label>
                         <input type="password" className="form-control" id="InputPassword1" placeholder="********" onChange={onChange} />
                     </div>
                     <button type="submit" className={`btn btn-primary ${styles.button1}`}>Iniciar</button>
