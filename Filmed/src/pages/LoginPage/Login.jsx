@@ -19,7 +19,6 @@ export const Login = () => {
     try{
       event.preventDefault();
       const {email, password} = formData;
-      console.log(formData)
       await loginWithEmailAndPassword( email, password )
       navigate("/");
     } catch (err) {
@@ -43,7 +42,7 @@ export const Login = () => {
     return(
         <div className={`d-flex justify-content-evenly align-items-center flex-wrap ${styles.container}`}>
             <div>
-                <img src="https://thumbs.dreamstime.com/b/family-mother-father-children-watching-projector-tv-movies-popcorn-evening-home-family-mother-father-children-158601206.jpg" className={styles.image} />
+                <img src="https://media.istockphoto.com/id/1392123667/es/foto/vista-trasera-de-una-familia-viendo-la-televisi%C3%B3n-en-casa.jpg?b=1&s=170667a&w=0&k=20&c=mUcKiwaAQpV5Cg1X0D5tdPbtaI3k4H6Frf7Me_GRlEk=" className={styles.image} />
             </div>
 
 
