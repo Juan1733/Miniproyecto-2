@@ -6,7 +6,8 @@ import { Layout } from './components/Layout/Layout';
 import { Login } from "./pages/LoginPage/Login"
 import { Register } from "./pages/RegisterPage/Register"
 import { SearchPage } from "./pages/SearchPage/SearchPage"
-import { HOME_URL, LOGIN_URL, REGISTER_URL, SEARCH_URL, UPCOMING_URL } from './constants/urls';
+import { DetailsPage } from "./pages/DetailsPage/DetailsPage"
+import { DETAIL_URL, HOME_URL, LOGIN_URL, REGISTER_URL, SEARCH_URL, UPCOMING_URL } from './constants/urls';
 import './index.css'
 import UpcomingPage from './pages/UpcomingPage/UpcomingPage';
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={REGISTER_URL} element={<Register />}/>
           <Route path={UPCOMING_URL} element={<UpcomingPage />}/>
           <Route path={SEARCH_URL} element={<SearchPage />}/>
+          <Route path="/movies/:movieId" element={<DetailsPage />}/> 
         </Route>
       </Routes>
     </BrowserRouter>

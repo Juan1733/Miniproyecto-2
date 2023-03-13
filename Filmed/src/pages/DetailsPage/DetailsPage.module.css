@@ -1,0 +1,38 @@
+.image {
+    height: 500px;
+}
+
+.detailContainer {
+    height: calc(100vh - 66px);
+}
+
+.overview {
+    color: white;
+    font-size: 18px;
+}
+
+.otherInfo {
+    background-color: rgba(0, 128, 0, 0.219);
+    border-radius: 20px;
+}
+
+.listLook {
+    font-size: 1.25rem;
+}
+
+/*Tablet*/
+@media (min-width: 750px) {
+    .overview {
+        font-size: 20px;
+    }
+    .image {
+        height: 700px;
+    }
+}
+
+/* Desktop*/
+@media (min-width: 1024px) {
+    .infoContainer {
+        width: 50vw;
+    }
+}

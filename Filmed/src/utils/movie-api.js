@@ -11,3 +11,7 @@ export async function fetchUpcoming(page) {
 export async function fetchSearchedMovie(name) {
     return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e75f27d22e10f3770113e902a6474342&language=es&query=${name}`)
 }
+
+export async function fetchDetails(id) {
+    return axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=e75f27d22e10f3770113e902a6474342&language=es`)
+}

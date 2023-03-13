@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     getMovies()
   }, [page])
-  console.log(movies)
+  
 
   return (
     <div className="App">
