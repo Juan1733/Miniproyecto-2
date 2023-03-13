@@ -1,4 +1,4 @@
-import { HOME_URL, LOGIN_URL, UPCOMING_URL } from '../../constants/urls';
+import { HOME_URL, LOGIN_URL, UPCOMING_URL, SEARCH_URL } from '../../constants/urls';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'
@@ -54,7 +54,7 @@ function Navbar() {
                     <div className="navbar-nav">
                         <a className="nav-link active" aria-current="page" href={HOME_URL}>Inicio</a>
                         <a className="nav-link" href={UPCOMING_URL}>Proximos estrenos</a>
-                        <a className="nav-link me-5" href="#">Pricing</a>
+                        <a className="nav-link me-5" href={SEARCH_URL}>Buscar Pelicula</a>
                         
                         {button}
 
