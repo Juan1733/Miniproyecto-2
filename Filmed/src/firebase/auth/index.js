@@ -59,14 +59,11 @@ import {
   }
   
   // HANDLE USER SIGN OUT
-  export const logout = async (callback) => {
+  export const logout = async () => {
     try {
       await signOut(auth);
       
-  
-      if (callback) {
-        callback();
-      }
+
     } catch (error) {
       console.error("SIGN OUT FAILED", { error });
     }
