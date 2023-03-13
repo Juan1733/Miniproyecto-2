@@ -7,9 +7,7 @@ import { useUser } from "../../contexts/userContext";
 import { logout } from "../../firebase/auth";
 
 function Navbar() {
-    const user = useUser();
-    console.log(user);
-
+    const {user} = useUser();
     const handleLogout = async() => {
         await logout();
     }
@@ -17,7 +15,7 @@ function Navbar() {
     // useEffect(() => {
 
     let button = null;
-    if (user.user) {
+    if (user) {
         button = (
         <button
             type="button"
