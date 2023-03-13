@@ -16,6 +16,27 @@ function Navbar() {
 
     // useEffect(() => {
 
+    let button = null;
+    if (user) {
+        button = (
+        <button
+            type="button"
+            onClick={handleLogout}
+            className={`btn ${styles.btnLook} text-white`}
+        >
+            Salir de la cuenta
+        </button>
+        );
+    } else {
+        button = (
+        <Link to={LOGIN_URL}>
+            <button type="button" className={`btn ${styles.btnLook} text-white`}>
+            Iniciar sesion
+            </button>
+        </Link>
+        );
+    }
+
     return (
         <nav className={`navbar navbar-expand-lg ${styles.navbarLook}`}>
             <div className="container-fluid d-flex">
@@ -35,14 +56,7 @@ function Navbar() {
                         <a className="nav-link" href={UPCOMING_URL}>Proximos estrenos</a>
                         <a className="nav-link me-5" href="#">Pricing</a>
                         
-                        {!!user ? (
-                            <button type="button" onClick={handleLogout} className={`btn ${styles.btnLook} text-white`}>Salir de la cuenta</button>
-                        ) : (
-
-                        <Link to={LOGIN_URL}>
-                            <button type="button" className={`btn ${styles.btnLook} text-white`}>Iniciar sesion</button>
-                        </Link>
-                        )}
+                        {button}
 
                         
                         
