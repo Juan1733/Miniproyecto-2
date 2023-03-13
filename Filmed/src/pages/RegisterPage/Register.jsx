@@ -68,12 +68,8 @@ export function Register() {
                 
                 <form className={styles.formFormat} onSubmit={onSubmit}>
                     <div className="mb-3">
-                        <label className="form-label">Nombre</label>
+                        <label className="form-label text-white">Nombre</label>
                         <input type="text" className="form-control" id="InputName" name="name" placeholder="John" onChange={handleOnChange}/>
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label text-white">Apellido</label>
-                        <input type="text" className="form-control" id="InputLastName" name="lastName" placeholder="Doe" onChange={handleOnChange} />
                     </div>
 
                     <div className="mb-3">
