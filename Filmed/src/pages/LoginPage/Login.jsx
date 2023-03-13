@@ -49,15 +49,15 @@ export const Login = () => {
 
             <div>
                 {/* <Link to={REGISTER_URL}>¿No tienes cuenta?{" "} <span>Registrate</span></Link> */}
-                <span class="text-light">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
-                <h2 class="text-light mt-4 mb-3">Iniciar sesión</h2>
+                <span className="text-light">¿No tienes cuenta? <a href={REGISTER_URL} className={styles.anchor}>Registrate aqui{" "}</a></span>
+                <h2 className="text-light mt-4 mb-3">Iniciar sesión</h2>
                 <form onSubmit={onSubmit}>
                     <div className="mb-3">
-                        <label className="form-label" class="text-light bg-dark">Correo</label>
+                        <label className="form-label text-light bg-dark">Correo</label>
                         <input type="email" className="form-control" id="InputEmail1" placeholder="example@gmail.com" name="email" onChange={handleOnChange} aria-describedby="emailHelp"/>
                     </div>
                     <div className="mb-4">
-                        <label className="form-label" class="text-light bg-dark">Contraseña</label>
+                        <label className="form-label text-light bg-dark">Contraseña</label>
                         <input type="password" className="form-control" id="InputPassword1" name="password" placeholder="********" onChange={handleOnChange} />
                     </div>
                     <button type="submit" className={`btn py-2 my-2 mb-3 ${styles.button1}`}>Iniciar</button>

@@ -17,7 +17,7 @@ function Navbar() {
     // useEffect(() => {
 
     let button = null;
-    if (user) {
+    if (user.user) {
         button = (
         <button
             type="button"
